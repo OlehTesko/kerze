@@ -1,0 +1,11 @@
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 15px;
+    background: black;
+    animation: blink 0.5s infinite alternate;
+}
+@keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

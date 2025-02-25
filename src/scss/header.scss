@@ -1,0 +1,39 @@
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: $blue;
+    color: $bg; 
+    padding: 8px 0;
+    z-index: 10000000;
+    &__container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: toRem(22);
+		line-height: 1.3;
+        @include adaptiveValue("font-size",22 ,18 ,2 , 1440, 768  );
+        @media (max-width:$mobile){
+            justify-content: space-between;
+        }
+
+    }
+    &__logo{
+        
+        @include adaptiveValue("width",200 ,92 );
+    }
+    &__menu {
+        @media (min-width:$mobile){
+            flex: 1 1 auto;
+        }
+        @include adaptiveValue("margin-left",-30 ,0 ,2 , 1440, 768  );
+    }
+    
+    &__link {
+        display: block;
+        font-family: 'Helvetica Neue LT Std 75 Bold';
+        @media (max-width:$mobile){
+            display: none;
+        }
+    }
+}
+

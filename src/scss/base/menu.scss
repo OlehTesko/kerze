@@ -1,0 +1,188 @@
+.menu {
+	// .menu__icon
+	&__icon {
+	}
+	// .menu__body
+	&__body {
+		@media (max-width: $mobile) {
+			position: fixed;
+			// background-color: #794f45;
+		
+			right: 0;
+			top: 0;
+			overflow: hidden;
+			// &::before {
+			// 	content: "";
+			// 	position: fixed;
+			// 	width: 100%;
+			// 	height: toRem(70);
+			// 	left: -100%;
+			// 	top: 0;
+			// 	transition: left 0.3s;
+			// 	z-index: 2;
+			// }
+			.menu-open & {
+				// left: 0;
+				&::before {
+					left: 0;
+				}
+				
+			}
+		}
+	}
+	// .menu__list
+	&__list {
+		@media (max-width:$mobile){
+			width: toRem(200);
+			height: toRem(200);
+			pointer-events: none;
+		}
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		@include adaptiveValue("gap",100 ,15, 2, 1440, 768 );
+		
+		@media (max-width: $mobile) {
+			flex-direction: column;
+			
+		}
+	}
+	// .menu__item
+	&__item {
+		pointer-events: all;
+		@media (max-width:$mobile){
+			position: absolute;
+			width: toRem(200);
+			top: 0;
+			right: 0;
+			
+		}
+		@media (max-width:$mobile){
+			transform-origin:  80% 60% ;
+			&:nth-child(1){
+				transform:  rotate(100deg);
+			}
+			&:nth-child(2){
+				transform:  rotate(100deg);
+			}
+			&:nth-child(3){
+				transform:  rotate(100deg);
+	
+			}
+			&:nth-child(4){
+				transform:  rotate(100deg);
+			}
+	
+			.menu-open &{
+	
+				&:nth-child(1){
+				transition: all 0.6s ease 0s ;
+					transform:  rotate(-0deg);
+				}
+				&:nth-child(2){
+					transform:  rotate(-26deg);
+				transition: all 0.6s ease 0.2s ;
+	
+				}
+				&:nth-child(3){
+				transition: all 0.6s ease 0.4s ;
+
+					transform:  rotate(-57deg);
+				}
+				&:nth-child(4){
+				transition: all 0.6s ease 0.6s ;
+	
+					transform:  rotate(-94deg);
+				}
+			}
+		}
+
+	}
+	// .menu__link
+	&__link {
+        font-family: 'Helvetica Neue LT Std 75 Bold';
+		@media (max-width: $mobile) {
+			min-width: 100px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 4px 14px;
+			// min-width: 180px;
+			clip-path: polygon(98.73% 97.89%, 95.98% 62.21%, 100% 39%, 91.64% 0.19%, 69.97% 8.93%, 44.69% 0.19%, 27.2% 10.12%, 14.07% 0.19%, 0% 10.12%, 2.96% 35.96%, 0% 68.7%, 8.71% 100%, 35.64% 92.67%, 60.86% 100%, 78.64% 91.95%);
+			background-color: $orange;
+		}
+	}
+}
+
+//Burger Icon
+.icon-menu {
+	display: none;
+
+	@media (max-width: $mobile) {
+		position: relative;
+		clip-path: polygon(44.9% 95.88%, 53.45% 97.63%, 65.93% 97.63%, 78.4% 97.63%, 88.42% 89.48%, 97.34% 81.38%, 98.87% 63.61%, 99.9% 51.7%, 96.18% 38.22%, 98.27% 24.39%, 92.48% 13.75%, 85.37% 3.93%, 72.23% 8.06%, 61.54% 5.32%, 55.09% 3.93%, 47.63% 1.87%, 40.12% 0%, 22.75% 5.06%, 11.78% 8.26%, 12.67% 29.26%, 8.12% 41.56%, 3.32% 53.77%, 0.88% 59.63%, 7.39% 76.64%, 14.52% 90.58%, 22.02% 91.89%, 29.53% 93.14%, 37.03% 94.48%);
+		width: toRem(35);
+		height: toRem(35);
+		z-index: 10000000;
+		background-color: $bg;
+		transition-duration: 0.5s;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		@media (any-hover: none) {
+			cursor: default;
+		};
+		@media (any-hover: hover){
+			&:hover{
+				clip-path: polygon(50% 100%, 58.33% 99.3%, 66.67% 97.14%, 75% 93.3%, 83.33% 87.27%, 91.67% 77.64%, 97% 65.84%, 99.9% 51.7%, 98.5% 37.55%, 91.67% 22.36%, 83.33% 12.73%, 75% 6.7%, 66.67% 2.86%, 58.33% 0.7%, 50% 0%, 41.67% 0.7%, 33.33% 2.86%, 25% 6.7%, 16.67% 12.73%, 8.33% 22.36%, 1% 36.8%, 0% 52.96%, 2.57% 65.84%, 8.33% 77.64%, 16.67% 87.27%, 25% 93.3%, 33.33% 97.14%, 41.67% 99.3%);
+			}
+		}
+		
+		
+	}
+}
+
+.icon-menu input {
+	display: flex;
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	opacity: 0; /* hide input */
+	cursor: pointer;
+	z-index: 1; /* top of the menu */
+  }
+.icon-menu span{
+	width: 18px;
+	height: 3px;
+	&:not(:last-child) {
+		margin-bottom: 4px;
+	}
+	background-color: $blue;
+	border-radius: 4px;
+	
+	transition: all 1.2s cubic-bezier(.08,.81,.87,.71);
+    }
+  #span1 {
+	transform-origin: 4px 0px;
+  }
+  #span3 {
+	transform-origin: bottom right;
+  }
+  .icon-menu input:checked ~ #span1 {
+	// background-color: $blue;
+
+	transform: rotate(45deg) translate(4px);
+  }
+  .icon-menu input:checked ~ #span2 {
+	// background-color: $blue;
+
+	transform: rotate(495deg) translate(-1px);   
+  }
+  .icon-menu input:checked ~ #span3 {
+	// background-color: $blue;
+
+	transform: rotate(45deg);
+	opacity: 0;
+  }
